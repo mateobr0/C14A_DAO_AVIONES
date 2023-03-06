@@ -4,7 +4,6 @@ import org.vuelosCharter.models.Avion;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class IDAOH2Avion implements IDAO<Avion>{
@@ -50,7 +49,7 @@ public class IDAOH2Avion implements IDAO<Avion>{
             ps_registrarAvion.setString(1, avion.getMarca());
             ps_registrarAvion.setString(2, avion.getModelo());
             ps_registrarAvion.setString(3, avion.getMatricula());
-            ps_registrarAvion.setObject(4,avion.getEntradaEnServicio());
+            ps_registrarAvion.setDate(4, Date.valueOf(avion.getEntradaEnServicio()));
             ps_registrarAvion.execute();
             ResultSet rs = ps_registrarAvion.getGeneratedKeys();
             while (rs.next()){
